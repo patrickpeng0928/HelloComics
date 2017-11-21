@@ -1,4 +1,4 @@
-for, and, nor, but, or, yet, so, to
+for, and, nor, but, or, yet, so
 either, both, neither, nor,
 not only, but also
 after all

@@ -1,18 +1,10 @@
 import string
 import os
 
+from HelloComicsApplication.Utilities.MakeLexicon import getLexicon
+
 pronouns_file = 'pronouns.txt'
 conjunctions_file = 'conjunctions.txt'
-
-def getLexicon(file_name):
-    word_list = []
-    with open(file_name, 'r') as f:
-        lines = f.readlines()
-    for line in lines:
-        words = line.strip().split(',')
-        for word in words:
-            word_list.append(word.strip())
-    return word_list
 
 pronoun_lst = getLexicon(pronouns_file)
 conjunction_lst = getLexicon(conjunctions_file)
