@@ -15,6 +15,12 @@ class Comics:
         self.keyword_comics = {}
 
     def create_keywords(self):
+        '''
+        create an index of comics:(comic name, alt-text)
+        key: each word in alt-text of every comic
+        value: a list of comic names that contains key
+        :return: dictionary
+        '''
         for comic, text in self.comics.iteritems():
             # clean text
             for char in string.punctuation:
@@ -31,10 +37,15 @@ class Comics:
                         self.keyword_comics[word] = [comic]
 
     def key_search(self, key):
+        '''
+        find all comics with the key
+        :param key: searching keyword
+        :return: a list of comics
+        '''
         comic_list = self.keyword_comics.get(key, [])
         return comic_list
 
-
+#### test
 if __name__ == '__main__':
     d = {
         "Barrel - Part 1": "Don't we all.",

@@ -16,6 +16,7 @@ n = RetrieveComicData().getLastNum(LATEST_COMIC)
 ### create a dictionary to keep comic and its alt text
 comics = {}
 
+# iterate all comics in the XKCD website
 for i in range(1, n + 1):
     comic_url = URL_PREFIX + str(i) + URL_POSTFIX
     comic_data = RetrieveComicData()
@@ -37,9 +38,10 @@ for i in range(1, n + 1):
 ### Found 5 most commonly used word  used as alt-text for the comics on XKCD
 wc = WordCount.WordCount()
 
+# update wordcount with all comics
 for key, value in comics.iteritems():
     wc.update(value)
-
+# find top 5 words
 top5 = [key for key, _ in wc.findTop5()]
 
 print '1. Here are the 5 most commonly used words used as alt-text for the comics on XKCD:'
@@ -48,7 +50,7 @@ print '{}'.format(', '.join(top5))
 
 ### keyword search
 
-print 'Please input a keyword to search comics on XKCD:'
+print '\nPlease input a keyword to search comics on XKCD:'
 keyword = raw_input()
 
 cs = ComicSearch.Comics(comics)
@@ -66,9 +68,9 @@ if comic_list:
         comic_wc = WordCount.WordCount()
         comic_wc.update(comics[comic])
         results[comic] = [key for key, _ in comic_wc.findTop5()]
-    print 'Here is the list of comics that contains keyword: {}, and the 5 most commonly used words of those related comics:'.format(keyword)
+    print '2. Here is the list of comics that contains keyword: {}, and the 5 most commonly used words of those related comics:'.format(keyword)
     for key, value in results.iteritems():
         print '{}: {}'.format(key, ', '.join(value))
-else:
+else: # comics_list is empty, no comic found with the keyword
     print 'There is no comic contains keyword:', keyword
 
